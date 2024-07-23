@@ -1,4 +1,4 @@
-package com.project.phonebook
+package com.project.phonebook.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.tabs.TabLayoutMediator
+import com.project.phonebook.MainViewPager
 import com.project.phonebook.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
