@@ -8,6 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.FragmentContainerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -17,9 +18,7 @@ class MainActivity : AppCompatActivity() {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-    private val mainViewPager by lazy {
-        MainViewPager(this)
-    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,9 +29,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.mainVp.adapter = mainViewPager
-        TabLayoutMediator(binding.mainLoTab, binding.mainVp) { tab, position ->
-            tab.text = "Fragment ${position + 1}"
-        }.attach()
+        supportFragmentManager.beginTransaction().replace(R.id.main_fcv, MainFragment(), "MAIN").commitNow()
     }
 }
