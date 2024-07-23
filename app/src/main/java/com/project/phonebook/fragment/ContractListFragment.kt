@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.phonebook.adapter.ContractListAdapter
 import com.project.phonebook.data.`object`.ContractObject
 import com.project.phonebook.databinding.FragmentContractListBinding
+import com.project.phonebook.dialog.AddContractDialog
 
 class ContractListFragment : Fragment() {
     private lateinit var binding: FragmentContractListBinding
@@ -25,6 +26,17 @@ class ContractListFragment : Fragment() {
         adapter.submitList(ContractObject.getContractList())
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
+
+        binding.addContractIvContractList.setOnClickListener {
+            val dialog = AddContractDialog(
+                onAcceptClick = {
+                    val currentList = adapter.currentList.toMutableList()
+                    currentList.add(it)
+                    adapter.submitList(currentList)
+                }
+            )
+            dialog.show(parentFragmentManager, "dialog")
+        }
 
         return binding.root
     }
