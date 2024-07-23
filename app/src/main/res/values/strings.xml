@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">PhoneBook</string>
-
+  
     <string-array name="time_types">
         <item>초</item>
         <item>분</item>
         <item>시간</item>
     </string-array>
+
 </resources>
