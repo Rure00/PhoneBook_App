@@ -6,11 +6,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class MainViewPager(fragment: Fragment): FragmentStateAdapter(fragment) {
-    private val pages = listOf<Fragment>(FirstFragment(), SecondFragment())
+    //TODO: update list.
+    private val pages = listOf<Fragment>()
 
     override fun getItemCount() = pages.size
     override fun createFragment(position: Int) = pages[position]
-
-
-
 }
