@@ -33,9 +33,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    // 뷰 바인딩, 탭 레이아웃 적용 준비 1(박정호)
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
+
+    // 탭 레이아웃 적용 준비 2(박정호)
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -45,4 +53,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+
 }
