@@ -8,6 +8,8 @@ data class ContractData(
     val id: Int,
     val profile: Int = 0,
     val userName: String = "",
+    val phoneNumber: String = "",
     val affiliated: String = "",
-    var isFavorite: Boolean = false
+    val sendNotificationSec: Int = 0,
+    var isFavorite: Boolean = false,
 ): Parcelable
