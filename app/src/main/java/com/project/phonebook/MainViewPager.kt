@@ -7,7 +7,8 @@ import com.project.phonebook.fragment.MyPageFragment
 
 class MainViewPager(fragment: Fragment): FragmentStateAdapter(fragment) {
     //TODO: update list.
-    val pages = listOf<Fragment>(ContractListFragment(), MyPageFragment())
+    private val pages = listOf<Fragment>(ContractListFragment(), MyPageFragment())
+    val pageTag = listOf(ContractListFragment.TAB_NAME, MyPageFragment.TAB_NAME)
 
     override fun getItemCount() = pages.size
     override fun createFragment(position: Int) = pages[position]

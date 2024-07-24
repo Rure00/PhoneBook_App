@@ -15,7 +15,10 @@ class ContractListFragment : Fragment() {
     private lateinit var binding: FragmentContractListBinding
     private lateinit var adapter: ContractListAdapter
 
-    val TAB_NAME = "Contract"
+    companion object {
+        const val TAB_NAME = "Contract"
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
