@@ -36,6 +36,7 @@ class MainFragment : Fragment() {
 
         binding.mainVp.adapter = mainViewPager
         TabLayoutMediator(binding.mainLoTab, binding.mainVp) { tab, position ->
+            //TODO: 태그 이용
             tab.text = "Fragment ${position + 1}"
         }.attach()
     }
