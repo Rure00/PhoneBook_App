@@ -9,7 +9,7 @@ import com.project.phonebook.R
 import com.project.phonebook.data.ContractData
 import com.project.phonebook.databinding.ItemContractListBinding
 
-class ContractListAdapter: ListAdapter<ContractData, ContractListAdapter.ViewHolder>(
+class ContractListAdapter(private val onNotificationClick: (ContractData) -> Unit): ListAdapter<ContractData, ContractListAdapter.ViewHolder>(
     object: DiffUtil.ItemCallback<ContractData>() {
         override fun areItemsTheSame(oldItem: ContractData, newItem: ContractData): Boolean = oldItem.id == newItem.id
 
@@ -31,6 +31,14 @@ class ContractListAdapter: ListAdapter<ContractData, ContractListAdapter.ViewHol
                 contractItemIvProfile.setImageResource(contract.profile)
                 contractItemTvUserName.text = contract.userName
                 contractItemTvAffiliated.text = contract.affiliated
+                contractItemIvFavorite.setColorFilter(
+                    if (contract.isFavorite) R.color.mainTurquoise
+                    else R.color.mainBlack
+                )
+
+                contractItemIvNotification.setOnClickListener {
+                    onNotificationClick(contract)
+                }
             }
         }
     }
