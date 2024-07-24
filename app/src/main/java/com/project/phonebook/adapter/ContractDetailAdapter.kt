@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.project.phonebook.R
 import com.project.phonebook.adapter.ContractListAdapter.ViewHolder
 import com.project.phonebook.data.DetailTitleData
-import com.project.phonebook.databinding.DetailItemRecyclerviewBinding
+import com.project.phonebook.databinding.ItemDetailRecyclerviewBinding
 import com.project.phonebook.databinding.FragmentContractDetailBinding
 import com.project.phonebook.databinding.ItemContractListBinding
 
@@ -19,7 +19,7 @@ class ContractDetailAdapter(val titleList: MutableList<DetailTitleData>) :
         parent: ViewGroup,
         viewType: Int
     ): ContractDetailAdapter.Holder {
-        val binding = DetailItemRecyclerviewBinding.inflate(
+        val binding = ItemDetailRecyclerviewBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -39,7 +39,7 @@ class ContractDetailAdapter(val titleList: MutableList<DetailTitleData>) :
         return titleList.size
     }
 
-    inner class Holder(val binding: DetailItemRecyclerviewBinding) :
+    inner class Holder(val binding: ItemDetailRecyclerviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         val listTitle = binding.detailRvTitle
     }
