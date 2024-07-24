@@ -15,22 +15,22 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.phonebook.MainActivity
 import com.project.phonebook.R
-import com.project.phonebook.adapter.ContractListAdapter
+import com.project.phonebook.adapter.ContactListAdapter
 import com.project.phonebook.data.ContractData
-import com.project.phonebook.data.`object`.ContractObject
-import com.project.phonebook.databinding.FragmentContractListBinding
-import com.project.phonebook.dialog.AddContractDialog
+import com.project.phonebook.data.`object`.ContactObject
+import com.project.phonebook.databinding.FragmentContactListBinding
+import com.project.phonebook.dialog.AddContactDialog
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class ContractListFragment : Fragment() {
-    private lateinit var binding: FragmentContractListBinding
-    private lateinit var adapter: ContractListAdapter
+class ContactListFragment : Fragment() {
+    private lateinit var binding: FragmentContactListBinding
+    private lateinit var adapter: ContactListAdapter
 
     companion object {
-        const val TAB_NAME = "Contract"
+        const val TAB_NAME = "Contact"
         const val CHANNEL_ID = "call play game notification"
     }
 
@@ -38,29 +38,29 @@ class ContractListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentContractListBinding.inflate(inflater)
-        adapter = ContractListAdapter(
-            onNotificationClick = { contractData ->
+        binding = FragmentContactListBinding.inflate(inflater)
+        adapter = ContactListAdapter(
+            onNotificationClick = { contactData ->
                 Toast.makeText(
                     context,
-                    "${contractData.sendNotificationSec}초 뒤에 ${contractData.userName}님과 함께 게임하기 위한 알람을 보냅니다.",
+                    "${contactData.sendNotificationSec}초 뒤에 ${contactData.userName}님과 함께 게임하기 위한 알람을 보냅니다.",
                     Toast.LENGTH_SHORT
                 ).show()
 
                 CoroutineScope(Dispatchers.Main).launch {
-                    delay(contractData.sendNotificationSec * 1000L)
-                    sendNotification(contractData)
+                    delay(contactData.sendNotificationSec * 1000L)
+                    sendNotification(contactData)
                 }
             }
         )
-        val recyclerView = binding.contractRvContractList
+        val recyclerView = binding.contactRvContactList
 
-        adapter.submitList(ContractObject.getContractList())
+        adapter.submitList(ContactObject.getContactList())
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
-        binding.addContractIvContractList.setOnClickListener {
-            val dialog = AddContractDialog(
+        binding.addContactIvContactList.setOnClickListener {
+            val dialog = AddContactDialog(
                 onAcceptClick = {
                     val currentList = adapter.currentList.toMutableList()
                     currentList.add(it)

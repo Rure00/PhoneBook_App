@@ -3,11 +3,11 @@ package com.project.phonebook.data.`object`
 import com.project.phonebook.R
 import com.project.phonebook.data.ContractData
 
-object ContractObject {
-    private val contractList = mutableListOf<ContractData>()
+object ContactObject {
+    private val contactList = mutableListOf<ContractData>()
 
     init {
-        addContract(
+        addContact(
             ContractData(
                 id = 0,
                 profile = R.drawable.ic_account_circle,
@@ -15,10 +15,10 @@ object ContractObject {
                 phoneNumber = "010-1234-5678",
                 affiliated = "월드오브워쉽",
                 sendNotificationSec = 10,
-                isFavorite = false
+                isFavorite = true
             )
         )
-        addContract(
+        addContact(
             ContractData(
                 id = 1,
                 profile = R.drawable.ic_account_circle,
@@ -29,7 +29,7 @@ object ContractObject {
                 isFavorite = false
             )
         )
-        addContract(
+        addContact(
             ContractData(
                 id = 2,
                 profile = R.drawable.ic_account_circle,
@@ -37,10 +37,10 @@ object ContractObject {
                 phoneNumber = "010-3456-7890",
                 affiliated = "월드오브워쉽",
                 sendNotificationSec = 1,
-                isFavorite = false
+                isFavorite = true
             )
         )
-        addContract(
+        addContact(
             ContractData(
                 id = 3,
                 profile = R.drawable.ic_account_circle,
@@ -53,11 +53,11 @@ object ContractObject {
         )
     }
 
-    fun getContractList() = contractList
+    fun getContactList() = contactList
 
-    fun getContractListSize() = contractList.size
+    fun getContactListSize() = contactList.size
 
-    private fun addContract(contractData: ContractData) {
-        contractList.add(contractData)
+    private fun addContact(contractData: ContractData) {
+        contactList.add(contractData)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.phonebook_app.Fragment
+package com.project.phonebook.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.project.phonebook.R
-import com.project.phonebook.adapter.ContractListAdapter
 import com.project.phonebook.databinding.FragmentContactDetailBinding
 
 

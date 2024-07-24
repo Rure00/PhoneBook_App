@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.phonebook_app.Fragment.ContactDetailFragment
+import com.project.phonebook.fragment.ContactDetailFragment
 import com.project.phonebook.data.ContractData
 import com.project.phonebook.databinding.ActivityMainBinding
 import com.project.phonebook.fragment.MainFragment
