@@ -35,9 +35,14 @@ class MainActivity : AppCompatActivity() {
         initNotificationPermission()
 
         val notificationExtraData = intent.getParcelableExtra("notificationClick", ContractData::class.java)
-        if (notificationExtraData != null)
-            supportFragmentManager.beginTransaction().replace(R.id.main_fcv, ContactDetailFragment()).commitNow()
-        else supportFragmentManager.beginTransaction().replace(R.id.main_fcv, MainFragment(), "MAIN").commitNow()
+        if (notificationExtraData != null) {
+            val contactDetailFragment = ContactDetailFragment()
+            val bundle = Bundle()
+            bundle.putParcelable("contact", notificationExtraData)
+            contactDetailFragment.arguments = bundle
+
+            supportFragmentManager.beginTransaction().replace(R.id.main_fcv, contactDetailFragment).commitNow()
+        } else supportFragmentManager.beginTransaction().replace(R.id.main_fcv, MainFragment(), "MAIN").commitNow()
     }
 
     private fun initNotificationPermission() {
