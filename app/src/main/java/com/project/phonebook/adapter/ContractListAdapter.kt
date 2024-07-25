@@ -9,7 +9,7 @@ import com.project.phonebook.R
 import com.project.phonebook.data.ContractData
 import com.project.phonebook.databinding.ItemContractListBinding
 
-class ContractListAdapter: ListAdapter<ContractData, ContractListAdapter.ViewHolder>(
+class ContractListAdapter(private val clickListener: ClickListener): ListAdapter<ContractData, ContractListAdapter.ViewHolder>(
     object: DiffUtil.ItemCallback<ContractData>() {
         override fun areItemsTheSame(oldItem: ContractData, newItem: ContractData): Boolean = oldItem.id == newItem.id
 
@@ -23,9 +23,13 @@ class ContractListAdapter: ListAdapter<ContractData, ContractListAdapter.ViewHol
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+
+        holder.binding.root.setOnClickListener {
+            clickListener.onItemClicked(position)
+        }
     }
 
-    inner class ViewHolder(private val binding: ItemContractListBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: ItemContractListBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(contract: ContractData) {
             with(binding) {
                 contractItemIvProfile.setImageResource(contract.profile)
@@ -33,5 +37,9 @@ class ContractListAdapter: ListAdapter<ContractData, ContractListAdapter.ViewHol
                 contractItemTvAffiliated.text = contract.affiliated
             }
         }
+    }
+
+    interface ClickListener {
+        fun onItemClicked(position: Int)
     }
 }

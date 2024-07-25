@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.phonebook_app.Fragment.ContactDetailFragment
+import com.project.phonebook.R
 import com.project.phonebook.adapter.ContractListAdapter
 import com.project.phonebook.data.ContractData
 import com.project.phonebook.data.`object`.ContractObject
@@ -29,7 +31,11 @@ class ContractListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentContractListBinding.inflate(inflater)
-        adapter = ContractListAdapter()
+        adapter = ContractListAdapter(object: ContractListAdapter.ClickListener {
+            override fun onItemClicked(position: Int) {
+                requireActivity().supportFragmentManager.beginTransaction().add(R.id.main_fcv, ContactDetailFragment()).commitNow()
+            }
+        } )
         val recyclerView = binding.contractRvContractList
 
         contactList.addAll(ContractObject.getContractList())
