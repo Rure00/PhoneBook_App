@@ -1,24 +1,17 @@
 package com.project.phonebook.adapter
 
-import android.icu.text.CaseMap.Title
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.project.phonebook.R
-import com.project.phonebook.adapter.ContractListAdapter.ViewHolder
 import com.project.phonebook.data.DetailTitleData
 import com.project.phonebook.databinding.ItemDetailRecyclerviewBinding
-import com.project.phonebook.databinding.FragmentContractDetailBinding
-import com.project.phonebook.databinding.ItemContractListBinding
 
-class ContractDetailAdapter(val titleList: MutableList<DetailTitleData>) :
-    RecyclerView.Adapter<ContractDetailAdapter.Holder>() {
+class ContactDetailAdapter(val titleList: MutableList<DetailTitleData>) :
+    RecyclerView.Adapter<ContactDetailAdapter.Holder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ContractDetailAdapter.Holder {
+    ): ContactDetailAdapter.Holder {
         val binding = ItemDetailRecyclerviewBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -27,7 +20,7 @@ class ContractDetailAdapter(val titleList: MutableList<DetailTitleData>) :
         return Holder(binding)
     }
 
-    override fun onBindViewHolder(holder: ContractDetailAdapter.Holder, position: Int) {
+    override fun onBindViewHolder(holder: ContactDetailAdapter.Holder, position: Int) {
         holder.listTitle.text = titleList[position].title
     }
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.project.phonebook.MainActivity
 import com.project.phonebook.adapter.ContractListAdapter
 import com.project.phonebook.data.`object`.ContractObject
 import com.project.phonebook.databinding.FragmentContractListBinding
@@ -39,6 +40,15 @@ class ContractListFragment : Fragment() {
             )
             dialog.show(parentFragmentManager, "dialog")
         }
+
+        /*Dyaos : ContactList 클릭시 디테일프레그먼트 이동*/
+        adapter.itemClick = object : ContractListAdapter.ItemClick{
+            override fun onClick(view: View, position: Int) {
+                    (activity as MainActivity).changeFragment(2)
+            }
+
+        }
+
 
         return binding.root
     }
