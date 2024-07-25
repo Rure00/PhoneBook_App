@@ -59,7 +59,7 @@ class ContractListFragment : Fragment() {
                 Log.d("ContractListFragment", "Get Contact List: ${list.size}")
                 val exSize = contactList.size
                 contactList.addAll(list)
-                binding.contractRvContractList.adapter!!.notifyItemRangeInserted(exSize, list.size)
+                adapter.notifyItemRangeInserted(exSize, list.size)
             }
 
         }).show(childFragmentManager, "LoadContact")
