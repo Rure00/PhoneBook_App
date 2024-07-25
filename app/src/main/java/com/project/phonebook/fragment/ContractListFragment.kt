@@ -1,15 +1,18 @@
 package com.project.phonebook.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.phonebook.adapter.ContractListAdapter
+import com.project.phonebook.data.ContractData
 import com.project.phonebook.data.`object`.ContractObject
 import com.project.phonebook.databinding.FragmentContractListBinding
 import com.project.phonebook.dialog.AddContractDialog
+import com.project.phonebook.dialog.LoadContactDialog
 
 class ContractListFragment : Fragment() {
     private lateinit var binding: FragmentContractListBinding
@@ -44,5 +47,18 @@ class ContractListFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        LoadContactDialog(object: LoadContactDialog.DismissListener {
+            override fun onDismiss(list: List<ContractData>) {
+                Log.d("ContractListFragment", "Get Contact List: ${list.size}")
+
+
+            }
+
+        }).show(childFragmentManager, "LoadContact")
     }
 }

@@ -11,6 +11,7 @@
     <string name="load_dialog_body">연락처를 동기화시킬 수 있습니다.\n(권한을 요청합니다.)</string>
     <string name="reject">거부</string>
     <string name="confirm">확인</string>
+    <string name="read_contact_reject_msg">연락처 접근 권한이 필요합니다.</string>
 
 
 </resources>

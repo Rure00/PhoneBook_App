@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".dialog.LoadContactDialog">
+    tools:context=".dialog.LoadContactDialog"
+    android:background="@drawable/rectangle_with_border_lightest_turquoise">
 
     <TextView
         android:id="@+id/load_dialog_title_tv"
@@ -16,11 +17,11 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         android:text="@string/load_dialog_title"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textStyle="bold"
 
         android:gravity="center"
-        android:background="@color/mainTurquoise"
+        android:background="@drawable/rectangle_with_border_turquoise"
         android:padding="10dp"
         />
 
@@ -37,13 +38,15 @@
 
         android:text="@string/load_dialog_body"
         android:textStyle="bold"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:gravity="center"
         />
 
+
+
     <LinearLayout
         android:id="@+id/load_dialog_button_lo"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
 
         app:layout_constraintTop_toBottomOf="@id/load_dialog_body_tv"
@@ -56,37 +59,39 @@
 
         android:weightSum="2"
         >
+
         <TextView
             android:id="@+id/load_dialog_reject_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:text="@string/reject"
             android:textSize="18sp"
             android:textStyle="bold"
 
-            android:gravity="center"
             android:layout_weight="1"
-
             android:padding="10dp"
+
+            android:gravity="center"
 
             android:background="@drawable/rectangle_with_border"
             />
         <TextView
             android:id="@+id/load_dialog_confirm_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:text="@string/confirm"
             android:textSize="18sp"
             android:textStyle="bold"
 
-            android:gravity="center"
             android:layout_weight="1"
-
             android:padding="10dp"
+
+            android:gravity="center"
 
             android:background="@drawable/rectangle_with_border"
             />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
