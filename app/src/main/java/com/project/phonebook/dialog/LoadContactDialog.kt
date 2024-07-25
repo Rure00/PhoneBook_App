@@ -76,6 +76,7 @@ class LoadContactDialog(private val dismissListener: DismissListener) : DialogFr
         val cursor = resolver.query(uri, projection, null, null, sortOrder)
 
         cursor?.let {
+            //TODO: 가능한 ContractListAdapter.items.size 받아와 초기화!
             val sizeContract = ContractObject.getContractListSize()
             var num = 0
             while(cursor.moveToNext()) {

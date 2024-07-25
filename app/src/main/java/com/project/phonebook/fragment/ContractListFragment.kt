@@ -17,6 +17,7 @@ import com.project.phonebook.dialog.LoadContactDialog
 class ContractListFragment : Fragment() {
     private lateinit var binding: FragmentContractListBinding
     private lateinit var adapter: ContractListAdapter
+    private val contactList = mutableListOf<ContractData>()
 
     companion object {
         const val TAB_NAME = "Contract"
@@ -31,7 +32,8 @@ class ContractListFragment : Fragment() {
         adapter = ContractListAdapter()
         val recyclerView = binding.contractRvContractList
 
-        adapter.submitList(ContractObject.getContractList())
+        contactList.addAll(ContractObject.getContractList())
+        adapter.submitList(contactList)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
@@ -55,8 +57,9 @@ class ContractListFragment : Fragment() {
         LoadContactDialog(object: LoadContactDialog.DismissListener {
             override fun onDismiss(list: List<ContractData>) {
                 Log.d("ContractListFragment", "Get Contact List: ${list.size}")
-
-
+                val exSize = contactList.size
+                contactList.addAll(list)
+                binding.contractRvContractList.adapter!!.notifyItemRangeInserted(exSize, list.size)
             }
 
         }).show(childFragmentManager, "LoadContact")
