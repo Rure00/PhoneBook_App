@@ -1,11 +1,19 @@
 package com.project.phonebook
 
+import android.content.Intent
+import android.os.Build
+import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
+import android.provider.Settings
 import androidx.activity.enableEdgeToEdge
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.project.phonebook.fragment.ContactDetailFragment
+import com.project.phonebook.data.ContractData
 import com.project.phonebook.data.DetailTitleData
 import com.project.phonebook.databinding.ActivityMainBinding
 import com.project.phonebook.fragment.ContactDetailFragment
@@ -17,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
+    @RequiresApi(VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,24 +36,26 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        supportFragmentManager.beginTransaction().replace(R.id.main_fcv, MainFragment(), "MAIN")
-            .commitNow()
+        initNotificationPermission()
 
+        val notificationExtraData = intent.getParcelableExtra("notificationClick", ContractData::class.java)
+        if (notificationExtraData != null) {
+            val contactDetailFragment = ContactDetailFragment()
+            val bundle = Bundle()
+            bundle.putParcelable("contact", notificationExtraData)
+            contactDetailFragment.arguments = bundle
+
+            supportFragmentManager.beginTransaction().replace(R.id.main_fcv, contactDetailFragment).commitNow()
+        } else supportFragmentManager.beginTransaction().replace(R.id.main_fcv, MainFragment(), "MAIN").commitNow()
     }
 
-    fun changeFragment(index: Int) {
-        when (index) {
-            1 -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.main_fcv, ContractListFragment())
-                    .commit()
-            }
-            2-> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.main_fcv, ContactDetailFragment())
-                    .commit()
+    private fun initNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= VERSION_CODES.TIRAMISU) {
+            if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+                val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                    putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+                }
+                startActivity(intent)
             }
         }
     }
