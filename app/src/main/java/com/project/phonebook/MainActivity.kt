@@ -12,7 +12,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.project.phonebook.fragment.ContactDetailFragment
-import com.project.phonebook.data.ContractData
+import com.project.phonebook.data.ContactData
 import com.project.phonebook.databinding.ActivityMainBinding
 import com.project.phonebook.fragment.MainFragment
 
@@ -34,15 +34,12 @@ class MainActivity : AppCompatActivity() {
 
         initNotificationPermission()
 
-        val notificationExtraData = intent.getParcelableExtra("notificationClick", ContractData::class.java)
+        supportFragmentManager.beginTransaction().add(R.id.main_fcv, MainFragment(), "MAIN").commitNow()
+        val notificationExtraData = intent.getParcelableExtra("notificationClick", ContactData::class.java)
         if (notificationExtraData != null) {
-            val contactDetailFragment = ContactDetailFragment()
-            val bundle = Bundle()
-            bundle.putParcelable("contact", notificationExtraData)
-            contactDetailFragment.arguments = bundle
-
-            supportFragmentManager.beginTransaction().replace(R.id.main_fcv, contactDetailFragment).commitNow()
-        } else supportFragmentManager.beginTransaction().replace(R.id.main_fcv, MainFragment(), "MAIN").commitNow()
+            val contactDetailFragment = ContactDetailFragment(notificationExtraData)
+            supportFragmentManager.beginTransaction().add(R.id.main_fcv, contactDetailFragment).commitNow()
+        }
     }
 
     private fun initNotificationPermission() {

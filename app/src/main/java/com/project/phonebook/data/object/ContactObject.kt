@@ -1,14 +1,14 @@
 package com.project.phonebook.data.`object`
 
 import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
+import com.project.phonebook.data.ContactData
 
 object ContactObject {
-    private val contactList = mutableListOf<ContractData>()
+    private val contactList = mutableListOf<ContactData>()
 
     init {
         addContact(
-            ContractData(
+            ContactData(
                 id = 0,
                 profile = R.drawable.ic_account_circle,
                 userName = "박정호",
@@ -19,7 +19,7 @@ object ContactObject {
             )
         )
         addContact(
-            ContractData(
+            ContactData(
                 id = 1,
                 profile = R.drawable.ic_account_circle,
                 userName = "김대현",
@@ -30,7 +30,7 @@ object ContactObject {
             )
         )
         addContact(
-            ContractData(
+            ContactData(
                 id = 2,
                 profile = R.drawable.ic_account_circle,
                 userName = "성승모",
@@ -41,7 +41,7 @@ object ContactObject {
             )
         )
         addContact(
-            ContractData(
+            ContactData(
                 id = 3,
                 profile = R.drawable.ic_account_circle,
                 userName = "임가람",
@@ -57,7 +57,7 @@ object ContactObject {
 
     fun getContactListSize() = contactList.size
 
-    private fun addContact(contractData: ContractData) {
-        contactList.add(contractData)
+    private fun addContact(contactData: ContactData) {
+        contactList.add(contactData)
     }
 }

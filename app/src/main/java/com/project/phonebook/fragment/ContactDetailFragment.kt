@@ -12,14 +12,13 @@ import androidx.annotation.RequiresApi
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
+import com.project.phonebook.data.ContactData
 import com.project.phonebook.adapter.ContactDetailAdapter
 import com.project.phonebook.data.DetailTitleData
 import com.project.phonebook.databinding.FragmentContactDetailBinding
 
 
-class ContactDetailFragment : Fragment() {
+class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
     private lateinit var binding: FragmentContactDetailBinding
     private lateinit var adapter: ContactDetailAdapter
 
@@ -27,9 +26,8 @@ class ContactDetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
         /*뒤로가기 추가중*/
         requireActivity().onBackPressed {
-            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_fcv,
-                ContactListFragment()
-            ).commit()
+            requireActivity().supportFragmentManager
+                .beginTransaction().remove(this).commitNow()
         }
     }
 
@@ -40,7 +38,7 @@ class ContactDetailFragment : Fragment() {
     ): View {
         binding = FragmentContactDetailBinding.inflate(inflater)
 
-        val arg = arguments?.getParcelable("contact", ContractData::class.java)
+        val arg = arguments?.getParcelable("contact", ContactData::class.java)
         Log.d("TAG", "onCreateView: $arg")
 
         setRecyclerView()

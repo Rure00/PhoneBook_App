@@ -6,7 +6,6 @@ import android.app.PendingIntent
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.phonebook.MainActivity
 import com.project.phonebook.R
 import com.project.phonebook.adapter.ContactListAdapter
-import com.project.phonebook.data.ContractData
+import com.project.phonebook.data.ContactData
 import com.project.phonebook.data.`object`.ContactObject
 import com.project.phonebook.databinding.FragmentContactListBinding
 import com.project.phonebook.dialog.AddContactDialog
@@ -30,8 +29,6 @@ import kotlinx.coroutines.launch
 class ContactListFragment : Fragment() {
     private lateinit var binding: FragmentContactListBinding
     private lateinit var adapter: ContactListAdapter
-    private val contactList = mutableListOf<ContractData>()
-
     companion object {
         const val TAB_NAME = "Contact"
         const val CHANNEL_ID = "call play game notification"
@@ -44,9 +41,10 @@ class ContactListFragment : Fragment() {
         binding = FragmentContactListBinding.inflate(inflater)
         adapter = ContactListAdapter(object: ContactListAdapter.ClickListener {
             override fun onItemClicked(position: Int) {
-                requireActivity().supportFragmentManager.beginTransaction().add(R.id.main_fcv, ContactDetailFragment()).commitNow()
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .add(R.id.main_fcv, ContactDetailFragment(adapter.currentList[position])).commitNow()
             }
-            override fun onNotificationClick(data: ContractData) {
+            override fun onNotificationClick(data: ContactData) {
                 Toast.makeText(
                     context,
                     "${data.sendNotificationSec}초 뒤에 ${data.userName}님과 함께 게임하기 위한 알람을 보냅니다.",
@@ -60,17 +58,17 @@ class ContactListFragment : Fragment() {
             }
         })
         val recyclerView = binding.contactRvContactList
-
         adapter.submitList(ContactObject.getContactList())
+
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adapter
 
         binding.addContactIvContactList.setOnClickListener {
             val dialog = AddContactDialog(
                 onAcceptClick = {
-                    val currentList = adapter.currentList.toMutableList()
-                    currentList.add(it)
-                    adapter.submitList(currentList)
+                    val curList = adapter.currentList.toMutableList()
+                    curList.add(it)
+                    adapter.submitList(curList)
                 }
             )
             dialog.show(parentFragmentManager, "dialog")
@@ -83,24 +81,23 @@ class ContactListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         LoadContactDialog(object: LoadContactDialog.DismissListener {
-            override fun onDismiss(list: List<ContractData>) {
-                Log.d("ContractListFragment", "Get Contact List: ${list.size}")
-                val exSize = contactList.size
-                contactList.addAll(list)
-                adapter.notifyItemRangeInserted(exSize, list.size)
+            override fun onDismiss(list: List<ContactData>) {
+                val curList = adapter.currentList.toMutableList()
+                curList.addAll(list)
+                adapter.submitList(curList)
             }
 
         }).show(childFragmentManager, "LoadContact")
     }
 
-    private fun sendNotification(contractData: ContractData) {
+    private fun sendNotification(contactData: ContactData) {
         val channel = NotificationChannel(CHANNEL_ID, "calling notification", NotificationManager.IMPORTANCE_DEFAULT)
         channel.description = "game call channel description"
         val notificationManager = context?.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
 
         val intent = Intent(context, MainActivity::class.java)
-        intent.putExtra("notificationClick", contractData)
+        intent.putExtra("notificationClick", contactData)
         val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         val builder = NotificationCompat.Builder(requireContext(), CHANNEL_ID)
@@ -108,7 +105,7 @@ class ContactListFragment : Fragment() {
             setSmallIcon(R.mipmap.ic_launcher)
             setWhen(System.currentTimeMillis())
             setContentTitle("게임 호출기")
-            setContentText("${contractData.userName}님과 게임할 시간입니다!")
+            setContentText("${contactData.userName}님과 게임할 시간입니다!")
             setAutoCancel(true)
             setContentIntent(pendingIntent)
         }

@@ -14,8 +14,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
 import com.project.phonebook.Permissions
 import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
-import com.project.phonebook.data.`object`.ContractObject
+import com.project.phonebook.data.ContactData
+import com.project.phonebook.data.`object`.ContactObject
 import com.project.phonebook.databinding.FragmentLoadContactDialogBinding
 import java.util.regex.Pattern
 
@@ -24,7 +24,7 @@ class LoadContactDialog(private val dismissListener: DismissListener) : DialogFr
     private var _biding: FragmentLoadContactDialogBinding? = null
     private val binding get() = _biding!!
 
-    private val loadedContractList = mutableListOf<ContractData>()
+    private val loadedContractList = mutableListOf<ContactData>()
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
             if (isGranted) {
@@ -77,7 +77,7 @@ class LoadContactDialog(private val dismissListener: DismissListener) : DialogFr
 
         cursor?.let {
             //TODO: 가능한 ContractListAdapter.items.size 받아와 초기화!
-            val sizeContract = ContractObject.getContractListSize()
+            val sizeContract = ContactObject.getContactListSize()
             var num = 0
             while(cursor.moveToNext()) {
                 val nameIndex = cursor.getColumnIndex(projection[0])
@@ -94,7 +94,7 @@ class LoadContactDialog(private val dismissListener: DismissListener) : DialogFr
                 Log.d("LoadContactDialog", "$num) name $name, number: $number")
 
                 loadedContractList.add(
-                    ContractData(
+                    ContactData(
                         id = sizeContract+num,
                         profile = R.drawable.ic_account_circle,
                         userName = name,
@@ -119,6 +119,6 @@ class LoadContactDialog(private val dismissListener: DismissListener) : DialogFr
     }
 
     interface DismissListener {
-        fun onDismiss(list: List<ContractData>)
+        fun onDismiss(list: List<ContactData>)
     }
 }

@@ -6,14 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
+import com.project.phonebook.data.ContactData
 import com.project.phonebook.databinding.ItemContactListBinding
 
-class ContactListAdapter(private val clickListener: ClickListener): ListAdapter<ContractData, ContactListAdapter.ViewHolder>(
-    object: DiffUtil.ItemCallback<ContractData>() {
-        override fun areItemsTheSame(oldItem: ContractData, newItem: ContractData): Boolean = oldItem.id == newItem.id
-
-        override fun areContentsTheSame(oldItem: ContractData, newItem: ContractData): Boolean = oldItem == newItem
+class ContactListAdapter(private val clickListener: ClickListener): ListAdapter<ContactData, ContactListAdapter.ViewHolder>(
+    object: DiffUtil.ItemCallback<ContactData>() {
+        override fun areItemsTheSame(oldItem: ContactData, newItem: ContactData): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: ContactData, newItem: ContactData): Boolean = oldItem == newItem
     }
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,7 +29,7 @@ class ContactListAdapter(private val clickListener: ClickListener): ListAdapter<
     }
 
     inner class ViewHolder(val binding: ItemContactListBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(contact: ContractData) {
+        fun bind(contact: ContactData) {
             with(binding) {
                 contactItemIvProfile.setImageResource(contact.profile)
                 contactItemTvUserName.text = contact.userName
@@ -49,6 +48,6 @@ class ContactListAdapter(private val clickListener: ClickListener): ListAdapter<
 
     interface ClickListener {
         fun onItemClicked(position: Int)
-        fun onNotificationClick(data: ContractData)
+        fun onNotificationClick(data: ContactData)
     }
 }

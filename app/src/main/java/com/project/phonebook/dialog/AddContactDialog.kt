@@ -10,11 +10,11 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
+import com.project.phonebook.data.ContactData
 import com.project.phonebook.data.`object`.ContactObject
 import com.project.phonebook.databinding.DialogAddContactBinding
 
-class AddContactDialog(private val onAcceptClick: (ContractData) -> Unit): DialogFragment() {
+class AddContactDialog(private val onAcceptClick: (ContactData) -> Unit): DialogFragment() {
     private lateinit var binding: DialogAddContactBinding
 
     override fun onCreateView(
@@ -57,7 +57,7 @@ class AddContactDialog(private val onAcceptClick: (ContractData) -> Unit): Dialo
                 return@setOnClickListener
             }
 
-            val addContractData = ContractData(
+            val addContactData = ContactData(
                 id = currentListSize,
                 profile = R.drawable.ic_account_circle,
                 userName = userNameEditText.text.toString(),
@@ -66,7 +66,7 @@ class AddContactDialog(private val onAcceptClick: (ContractData) -> Unit): Dialo
                 sendNotificationSec = sendNotificationEditText.text.toString().toInt() * selectTimeValueSecond,
                 isFavorite = false
             )
-            onAcceptClick(addContractData)
+            onAcceptClick(addContactData)
 
             dismiss()
         }
