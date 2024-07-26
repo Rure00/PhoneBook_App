@@ -11,8 +11,8 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
-import com.project.phonebook.data.`object`.ContractObject
+import com.project.phonebook.data.ContactData
+import com.project.phonebook.data.`object`.ContactObject
 import com.project.phonebook.data.`object`.MyPageAccinfo
 import com.project.phonebook.databinding.MypageMainLayoutV1Binding
 
@@ -39,7 +39,7 @@ class MyPageFragment : Fragment() {
 //        }
 //    }
 
-    val myAccount:ContractData? = ContractObject.getContractList().find { it.userName == "박정호" }
+    val myAccount:ContactData? = ContactObject.getContactList().find { it.userName == "박정호" }
     private var chkAcc: Int = 0
 
 //    private lateinit var finAccount: ContractData

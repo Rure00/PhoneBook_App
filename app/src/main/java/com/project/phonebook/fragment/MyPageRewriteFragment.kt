@@ -10,8 +10,7 @@ import android.widget.EditText
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
-import com.project.phonebook.data.`object`.ContractObject
+import com.project.phonebook.data.ContactData
 import com.project.phonebook.data.`object`.MyPageAccinfo
 import com.project.phonebook.databinding.MypageMainLayoutRewriteProfileV1Binding
 
@@ -26,7 +25,7 @@ class MyPageRewriteFragment : Fragment() {
     companion object{
         private val rawAccount:String = "myAccount"
 
-        fun pass1Object(myAccount:ContractData): MyPageRewriteFragment {
+        fun pass1Object(myAccount:ContactData): MyPageRewriteFragment {
             val newFragment = MyPageRewriteFragment()
             val boxBox = Bundle()
             boxBox.putParcelable(rawAccount, myAccount)
@@ -35,7 +34,7 @@ class MyPageRewriteFragment : Fragment() {
         }
     }
 
-    private lateinit var trgAccount: ContractData
+    private lateinit var trgAccount: ContactData
 
     override fun onCreateView(
         inflater : LayoutInflater, container: ViewGroup?,
