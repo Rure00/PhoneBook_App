@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">PhoneBook</string>
-  
+
     <string-array name="time_types">
         <item>초</item>
         <item>분</item>
         <item>시간</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
