@@ -59,18 +59,19 @@ class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMess
         }
     }
 
-    override fun onCallDataReceived(callOn: Boolean) {
+    override fun onCallDataReceived(callOn: Boolean, callNum: String) {
         if (callOn == true) {
             val callIntent = Intent(Intent.ACTION_DIAL)
+            callIntent.data = Uri.parse("tel:${callNum}")
             startActivity(callIntent)
         }
 
     }
 
-    override fun onMessageDataReceived(messageOn: Boolean) {
+    override fun onMessageDataReceived(messageOn: Boolean, messageNum: String) {
         if (messageOn == true) {
             val messageIntent = Intent(Intent.ACTION_SENDTO)
-            messageIntent.data = Uri.parse("smsto:010-1234-5678")
+            messageIntent.data = Uri.parse("smsto:${messageNum}")
             startActivity(messageIntent)
         }
     }

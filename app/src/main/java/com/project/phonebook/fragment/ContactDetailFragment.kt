@@ -6,36 +6,34 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.phonebook.data.ContactData
-import com.project.phonebook.adapter.ContactDetailAdapter
-import com.project.phonebook.data.DetailTitleData
+import com.project.phonebook.data.`object`.ContactObject
 import com.project.phonebook.databinding.FragmentContactDetailBinding
 
 private const val ARG_PARAM1 = "param1"
 
 interface FragmentMessageDataListener {
-    fun onMessageDataReceived(messageOn: Boolean)
+    fun onMessageDataReceived(messageOn: Boolean, messageNum: String)
 }
 
 interface FragmentCallDataListener {
-    fun onCallDataReceived(callOn: Boolean)
+    fun onCallDataReceived(callOn: Boolean, callNum: String)
 }
 
 
 class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
     private lateinit var binding: FragmentContactDetailBinding
-    private lateinit var adapter: ContactDetailAdapter
+
 
     val SEND_REQUEST_CODE = 1
     val CALL_REQUEST_CODE = 1
@@ -44,7 +42,7 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
     private var messageListener: FragmentMessageDataListener? = null
     private var callListener: FragmentCallDataListener? = null
     private var param1: String? = null
-    private val _binding get() = binding
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -85,7 +83,7 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
 
     private fun smsClickListener() {
         val btnmessage = binding.detailBtnMessage
-        val messageTelNum = "010-1234-5678" //추후 데이터 받아서 넣을예정
+        val messageTelNum = contactData.phoneNumber //추후 데이터 받아서 넣을예정
         btnmessage.setOnClickListener {
             var callMessage = false
             var telNum = messageTelNum
@@ -100,13 +98,14 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
                 requestPermissions(arrayOf(android.Manifest.permission.SEND_SMS), SEND_REQUEST_CODE)
             } else {
                 callMessage = true
-                messageListener?.onMessageDataReceived(callMessage)
+                messageListener?.onMessageDataReceived(callMessage, telNum)
             }
         }
     }
 
     private fun callClickListener() {
         val btnCall = binding.detailBtnCall
+        val callNum = contactData.phoneNumber
         val permissionCheck =
             ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE)
         btnCall.setOnClickListener {
@@ -118,7 +117,7 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
                 requestPermissions(arrayOf(Manifest.permission.CALL_PHONE), CALL_REQUEST_CODE)
             } else {
                 callDial = true
-                callListener?.onCallDataReceived(callDial)
+                callListener?.onCallDataReceived(callDial, callNum)
             }
         }
     }
@@ -131,25 +130,16 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
     ): View {
         binding = FragmentContactDetailBinding.inflate(inflater)
 
-        val arg = arguments?.getParcelable("contact", ContactData::class.java)
-        Log.d("TAG", "onCreateView: $arg")
+        //val arg = arguments?.getParcelable("contact", ContactData::class.java)
+        binding.detailTvProfileId.text = contactData.userName
+        binding.detailFirstListContent.text = contactData.phoneNumber
+        binding.detailSecondListContent.text = contactData.affiliated
+        binding.detailThirdListContent.setText("${contactData.sendNotificationSec} 분 후 알람")
 
-        setRecyclerView()
+
+
 
         return binding.root
-
-    }
-
-    private fun setRecyclerView() {
-        val titleList = mutableListOf<DetailTitleData>()
-        titleList.add(DetailTitleData("Phone Number"))
-        titleList.add(DetailTitleData("Event"))
-        titleList.add(DetailTitleData("E-mail Address"))
-
-        adapter = ContactDetailAdapter(titleList)
-        binding.detailRecyclerview.adapter = adapter
-        binding.detailRecyclerview.layoutManager = LinearLayoutManager(requireContext())
-
 
     }
 
