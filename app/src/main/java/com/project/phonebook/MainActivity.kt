@@ -1,11 +1,14 @@
 package com.project.phonebook
 
+import android.app.ActivityManager
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +20,7 @@ import com.project.phonebook.data.ContactData
 import com.project.phonebook.databinding.ActivityMainBinding
 import com.project.phonebook.fragment.FragmentCallDataListener
 import com.project.phonebook.fragment.FragmentMessageDataListener
+import com.project.phonebook.fragment.LoginFragment
 import com.project.phonebook.fragment.MainFragment
 
 class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMessageDataListener {
@@ -35,9 +39,12 @@ class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMess
             insets
         }
 
+
         initNotificationPermission()
 
-        supportFragmentManager.beginTransaction().add(R.id.main_fcv, MainFragment(), "MAIN")
+
+
+        supportFragmentManager.beginTransaction().add(R.id.main_fcv, LoginFragment(), "MAIN")
             .commitNow()
         val notificationExtraData =
             intent.getParcelableExtra("notificationClick", ContactData::class.java)
@@ -79,6 +86,24 @@ class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMess
             messageIntent.setData(smsUri)
             messageIntent.putExtra("sms_body", "${messageTargetUser}님에게 알람을 보냅니다!")
             startActivity(messageIntent)
+        }
+    }
+
+    @RequiresApi(VERSION_CODES.TIRAMISU)
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+
+        Log.d("MainActivity", "On New Intent")
+
+        val notificationExtraData =
+            intent?.getParcelableExtra("notificationClick", ContactData::class.java)
+        if (notificationExtraData != null) {
+            Log.d("MainActivity", "notificationExtraData is Not Null")
+            val contactDetailFragment = ContactDetailFragment(notificationExtraData)
+            supportFragmentManager.beginTransaction().add(R.id.main_fcv, contactDetailFragment)
+                .commitNow()
+        } else {
+            Log.d("MainActivity", "notificationExtraData is Null")
         }
     }
 
