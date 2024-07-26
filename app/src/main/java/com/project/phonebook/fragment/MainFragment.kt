@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.tabs.TabLayoutMediator
+import com.project.phonebook.MainActivity
 import com.project.phonebook.MainViewPager
 import com.project.phonebook.databinding.FragmentMainBinding
 
@@ -26,6 +27,7 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentMainBinding.inflate(inflater)
+
         return binding.root
     }
 
@@ -36,8 +38,7 @@ class MainFragment : Fragment() {
 
         binding.mainVp.adapter = mainViewPager
         TabLayoutMediator(binding.mainLoTab, binding.mainVp) { tab, position ->
-            //TODO: 태그 이용
-            tab.text = "Fragment ${position + 1}"
+            tab.text = mainViewPager.pageTag[position]
         }.attach()
     }
 }

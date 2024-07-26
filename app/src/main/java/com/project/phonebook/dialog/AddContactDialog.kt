@@ -10,28 +10,28 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
-import com.project.phonebook.data.`object`.ContractObject
-import com.project.phonebook.databinding.DialogAddContractBinding
+import com.project.phonebook.data.ContactData
+import com.project.phonebook.data.`object`.ContactObject
+import com.project.phonebook.databinding.DialogAddContactBinding
 
-class AddContractDialog(private val onAcceptClick: (ContractData) -> Unit): DialogFragment() {
-    private lateinit var binding: DialogAddContractBinding
+class AddContactDialog(private val onAcceptClick: (ContactData) -> Unit): DialogFragment() {
+    private lateinit var binding: DialogAddContactBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DialogAddContractBinding.inflate(inflater)
-        val userNameEditText = binding.contractDialogEtUserName
-        val phoneNumEditText = binding.contractDialogEtPhoneNumber
-        val affiliatedEditText = binding.contractDialogEtAffiliated
-        val sendNotificationEditText = binding.contractDialogEtSendNotificationTime
+        binding = DialogAddContactBinding.inflate(inflater)
+        val userNameEditText = binding.contactDialogEtUserName
+        val phoneNumEditText = binding.contactDialogEtPhoneNumber
+        val affiliatedEditText = binding.contactDialogEtAffiliated
+        val sendNotificationEditText = binding.contactDialogEtSendNotificationTime
 
         phoneNumEditText.addTextChangedListener(PhoneNumberFormattingTextWatcher())
 
         var selectTimeValueSecond = 1
         binding.initSpinner()
-        binding.contractDialogSpinnerSelectTimeType.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+        binding.contactDialogSpinnerSelectTimeType.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if (parent != null) {
                     when (position) {
@@ -45,8 +45,8 @@ class AddContractDialog(private val onAcceptClick: (ContractData) -> Unit): Dial
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        val currentListSize = ContractObject.getContractListSize()
-        binding.contractDialogBtnAccept.setOnClickListener {
+        val currentListSize = ContactObject.getContactListSize()
+        binding.contactDialogBtnAccept.setOnClickListener {
             if (userNameEditText.text.isEmpty() || phoneNumEditText.text.isEmpty() ||
                 affiliatedEditText.text.isEmpty() || sendNotificationEditText.text.isEmpty()) {
                 Toast.makeText(context, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
@@ -57,7 +57,7 @@ class AddContractDialog(private val onAcceptClick: (ContractData) -> Unit): Dial
                 return@setOnClickListener
             }
 
-            val addContractData = ContractData(
+            val addContactData = ContactData(
                 id = currentListSize,
                 profile = R.drawable.ic_account_circle,
                 userName = userNameEditText.text.toString(),
@@ -66,25 +66,25 @@ class AddContractDialog(private val onAcceptClick: (ContractData) -> Unit): Dial
                 sendNotificationSec = sendNotificationEditText.text.toString().toInt() * selectTimeValueSecond,
                 isFavorite = false
             )
-            onAcceptClick(addContractData)
+            onAcceptClick(addContactData)
 
             dismiss()
         }
 
-        binding.contractDialogBtnCancel.setOnClickListener {
+        binding.contactDialogBtnCancel.setOnClickListener {
             dismiss()
         }
 
         return binding.root
     }
 
-    private fun DialogAddContractBinding.initSpinner() {
+    private fun DialogAddContactBinding.initSpinner() {
         val adapter = ArrayAdapter(
             requireContext(),
             androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
             resources.getStringArray(R.array.time_types)
         )
         adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item)
-        contractDialogSpinnerSelectTimeType.adapter = adapter
+        contactDialogSpinnerSelectTimeType.adapter = adapter
     }
 }

@@ -18,7 +18,10 @@ import com.project.phonebook.databinding.MypageMainLayoutV1Binding
 
 class MyPageFragment : Fragment() {
 
-    val TAB_NAME = "My Page"
+    companion object {
+        const val TAB_NAME = "My Page"
+    }
+
 
     // 바인딩용 구문 추가 1(박정호)
     private lateinit var MyPageStdBinding: MypageMainLayoutV1Binding

@@ -1,25 +1,25 @@
 package com.project.phonebook.data.`object`
 
 import com.project.phonebook.R
-import com.project.phonebook.data.ContractData
+import com.project.phonebook.data.ContactData
 
-object ContractObject {
-    private val contractList = mutableListOf<ContractData>()
+object ContactObject {
+    private val contactList = mutableListOf<ContactData>()
 
     init {
-        addContract(
-            ContractData(
+        addContact(
+            ContactData(
                 id = 0,
                 profile = R.drawable.ic_account_circle,
                 userName = "박정호",
                 phoneNumber = "010-1234-5678",
                 affiliated = "월드오브워쉽",
                 sendNotificationSec = 10,
-                isFavorite = false
+                isFavorite = true
             )
         )
-        addContract(
-            ContractData(
+        addContact(
+            ContactData(
                 id = 1,
                 profile = R.drawable.ic_account_circle,
                 userName = "김대현",
@@ -29,19 +29,19 @@ object ContractObject {
                 isFavorite = false
             )
         )
-        addContract(
-            ContractData(
+        addContact(
+            ContactData(
                 id = 2,
                 profile = R.drawable.ic_account_circle,
                 userName = "성승모",
                 phoneNumber = "010-3456-7890",
                 affiliated = "월드오브워쉽",
                 sendNotificationSec = 1,
-                isFavorite = false
+                isFavorite = true
             )
         )
-        addContract(
-            ContractData(
+        addContact(
+            ContactData(
                 id = 3,
                 profile = R.drawable.ic_account_circle,
                 userName = "임가람",
@@ -53,11 +53,11 @@ object ContractObject {
         )
     }
 
-    fun getContractList() = contractList
+    fun getContactList() = contactList
 
-    fun getContractListSize() = contractList.size
+    fun getContactListSize() = contactList.size
 
-    private fun addContract(contractData: ContractData) {
-        contractList.add(contractData)
+    private fun addContact(contactData: ContactData) {
+        contactList.add(contactData)
     }
 }
