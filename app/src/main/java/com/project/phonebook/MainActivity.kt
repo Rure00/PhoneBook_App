@@ -1,6 +1,7 @@
 package com.project.phonebook
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
@@ -14,9 +15,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.project.phonebook.fragment.ContactDetailFragment
 import com.project.phonebook.data.ContactData
 import com.project.phonebook.databinding.ActivityMainBinding
+import com.project.phonebook.fragment.FragmentCallDataListener
+import com.project.phonebook.fragment.FragmentMessageDataListener
 import com.project.phonebook.fragment.MainFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMessageDataListener {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -34,11 +37,14 @@ class MainActivity : AppCompatActivity() {
 
         initNotificationPermission()
 
-        supportFragmentManager.beginTransaction().add(R.id.main_fcv, MainFragment(), "MAIN").commitNow()
-        val notificationExtraData = intent.getParcelableExtra("notificationClick", ContactData::class.java)
+        supportFragmentManager.beginTransaction().add(R.id.main_fcv, MainFragment(), "MAIN")
+            .commitNow()
+        val notificationExtraData =
+            intent.getParcelableExtra("notificationClick", ContactData::class.java)
         if (notificationExtraData != null) {
             val contactDetailFragment = ContactDetailFragment(notificationExtraData)
-            supportFragmentManager.beginTransaction().add(R.id.main_fcv, contactDetailFragment).commitNow()
+            supportFragmentManager.beginTransaction().add(R.id.main_fcv, contactDetailFragment)
+                .commitNow()
         }
     }
 
@@ -50,6 +56,22 @@ class MainActivity : AppCompatActivity() {
                 }
                 startActivity(intent)
             }
+        }
+    }
+
+    override fun onCallDataReceived(callOn: Boolean) {
+        if (callOn == true) {
+            val callIntent = Intent(Intent.ACTION_DIAL)
+            startActivity(callIntent)
+        }
+
+    }
+
+    override fun onMessageDataReceived(messageOn: Boolean) {
+        if (messageOn == true) {
+            val messageIntent = Intent(Intent.ACTION_SENDTO)
+            messageIntent.data = Uri.parse("smsto:010-1234-5678")
+            startActivity(messageIntent)
         }
     }
 
