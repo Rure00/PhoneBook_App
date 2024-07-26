@@ -63,9 +63,9 @@ class MyPageRewriteFragment : Fragment() {
 
                     Log.d("MyPageRewriteFragment", "수정된 프로필 전달을 위한 트랜색션 시작")
 
-                    MyPageAccinfo.accName = trgAccount.userName
-                    MyPageAccinfo.accPhone = trgAccount.phoneNumber
-                    MyPageAccinfo.accParty = trgAccount.affiliated
+                    MyPageAccinfo.accName = MyPageRewBinding.mypageEdittextName.text.toString()
+                    MyPageAccinfo.accParty = MyPageRewBinding.mypageEdittextCompany.text.toString()
+                    MyPageAccinfo.accPhone = MyPageRewBinding.mypageEdittextContentsPhone.text.toString()
                     MyPageAccinfo.accChk = true
 
                     Log.d("MyPageRewriteFragment", "수정된 프로필 전달을 위한 싱글톤 생성 완료")

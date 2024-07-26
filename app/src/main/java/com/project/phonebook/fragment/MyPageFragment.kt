@@ -37,8 +37,9 @@ class MyPageFragment : Fragment() {
 //    }
 
     val myAccount:ContractData? = ContractObject.getContractList().find { it.userName == "박정호" }
-    private lateinit var finAccount: ContractData
     private var chkAcc: Int = 0
+
+//    private lateinit var finAccount: ContractData
 //    lateinit var nowAccount:ContractData
 
     override fun onCreateView(
@@ -52,11 +53,15 @@ class MyPageFragment : Fragment() {
         // MyPageRewrite에서 수정받은 내용이 있을 때(싱글톤)
         if(MyPageAccinfo.accChk == true){
             Log.d("MyPageFragment", "프로필 수정됬어요(싱글톤)!!")
+
             MyPageStdBinding.apply{
                 mypageTextName.text = MyPageAccinfo.accName
                 mypageTextCompany.text = MyPageAccinfo.accParty
                 mypageTextContentsPhone.text = MyPageAccinfo.accPhone
             }
+
+            Log.d("MyPageFragment", "${MyPageStdBinding.mypageTextName.text}")
+            MyPageAccinfo.accChk = false
             chkAcc = 1
         }
         // MyPageRewrite에서 수정받은 내용이 있을 때(번들)
