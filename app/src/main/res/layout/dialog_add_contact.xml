@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".dialog.AddContractDialog">
+    tools:context=".dialog.AddContactDialog">
 
     <ImageView
-        android:id="@+id/contract_dialog_iv_title"
+        android:id="@+id/contact_dialog_iv_title"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:src="@drawable/ic_account_circle"
@@ -17,17 +17,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/contract_dialog_ic_title_user_name"
+        android:id="@+id/contact_dialog_ic_title_user_name"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:src="@drawable/ic_person"
         android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/contract_dialog_et_user_name"
+        app:layout_constraintBottom_toBottomOf="@+id/contact_dialog_et_user_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/contract_dialog_et_user_name" />
+        app:layout_constraintTop_toTopOf="@+id/contact_dialog_et_user_name" />
 
     <EditText
-        android:id="@+id/contract_dialog_et_user_name"
+        android:id="@+id/contact_dialog_et_user_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -39,20 +39,20 @@
         android:layout_marginStart="4dp"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/contract_dialog_ic_title_user_name"
-        app:layout_constraintTop_toBottomOf="@+id/contract_dialog_iv_title" />
+        app:layout_constraintStart_toEndOf="@+id/contact_dialog_ic_title_user_name"
+        app:layout_constraintTop_toBottomOf="@+id/contact_dialog_iv_title" />
 
     <ImageView
-        android:id="@+id/contract_dialog_iv_title_phone_number"
+        android:id="@+id/contact_dialog_iv_title_phone_number"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:src="@drawable/ic_phone"
-        app:layout_constraintBottom_toBottomOf="@+id/contract_dialog_et_phone_number"
-        app:layout_constraintStart_toStartOf="@+id/contract_dialog_ic_title_user_name"
-        app:layout_constraintTop_toTopOf="@+id/contract_dialog_et_phone_number" />
+        app:layout_constraintBottom_toBottomOf="@+id/contact_dialog_et_phone_number"
+        app:layout_constraintStart_toStartOf="@+id/contact_dialog_ic_title_user_name"
+        app:layout_constraintTop_toTopOf="@+id/contact_dialog_et_phone_number" />
 
     <EditText
-        android:id="@+id/contract_dialog_et_phone_number"
+        android:id="@+id/contact_dialog_et_phone_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -63,21 +63,21 @@
         android:inputType="phone"
         android:maxLength="13"
         android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/contract_dialog_et_user_name"
-        app:layout_constraintStart_toEndOf="@+id/contract_dialog_iv_title_phone_number"
-        app:layout_constraintTop_toBottomOf="@+id/contract_dialog_et_user_name" />
+        app:layout_constraintEnd_toEndOf="@+id/contact_dialog_et_user_name"
+        app:layout_constraintStart_toEndOf="@+id/contact_dialog_iv_title_phone_number"
+        app:layout_constraintTop_toBottomOf="@+id/contact_dialog_et_user_name" />
 
     <ImageView
-        android:id="@+id/contract_dialog_iv_affiliated_title"
+        android:id="@+id/contact_dialog_iv_affiliated_title"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:src="@drawable/ic_document_bag"
-        app:layout_constraintBottom_toBottomOf="@+id/contract_dialog_et_affiliated"
-        app:layout_constraintStart_toStartOf="@+id/contract_dialog_iv_title_phone_number"
-        app:layout_constraintTop_toTopOf="@+id/contract_dialog_et_affiliated" />
+        app:layout_constraintBottom_toBottomOf="@+id/contact_dialog_et_affiliated"
+        app:layout_constraintStart_toStartOf="@+id/contact_dialog_iv_title_phone_number"
+        app:layout_constraintTop_toTopOf="@+id/contact_dialog_et_affiliated" />
 
     <EditText
-        android:id="@+id/contract_dialog_et_affiliated"
+        android:id="@+id/contact_dialog_et_affiliated"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -87,32 +87,32 @@
         android:inputType="text"
         android:maxLines="1"
         android:padding="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/contract_dialog_et_phone_number"
-        app:layout_constraintStart_toEndOf="@+id/contract_dialog_iv_affiliated_title"
-        app:layout_constraintTop_toBottomOf="@+id/contract_dialog_et_phone_number" />
+        app:layout_constraintEnd_toEndOf="@+id/contact_dialog_et_phone_number"
+        app:layout_constraintStart_toEndOf="@+id/contact_dialog_iv_affiliated_title"
+        app:layout_constraintTop_toBottomOf="@+id/contact_dialog_et_phone_number" />
 
     <ImageView
-        android:id="@+id/contract_dialog_iv_title_notification"
+        android:id="@+id/contact_dialog_iv_title_notification"
         android:layout_width="28dp"
         android:layout_height="28dp"
         android:src="@drawable/ic_notification"
-        app:layout_constraintBottom_toBottomOf="@+id/contract_dialog_set_notification_sec"
-        app:layout_constraintStart_toStartOf="@+id/contract_dialog_iv_affiliated_title"
-        app:layout_constraintTop_toTopOf="@+id/contract_dialog_set_notification_sec" />
+        app:layout_constraintBottom_toBottomOf="@+id/contact_dialog_set_notification_sec"
+        app:layout_constraintStart_toStartOf="@+id/contact_dialog_iv_affiliated_title"
+        app:layout_constraintTop_toTopOf="@+id/contact_dialog_set_notification_sec" />
 
     <LinearLayout
-        android:id="@+id/contract_dialog_set_notification_sec"
+        android:id="@+id/contact_dialog_set_notification_sec"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/contract_dialog_et_affiliated"
-        app:layout_constraintStart_toEndOf="@+id/contract_dialog_iv_title_notification"
-        app:layout_constraintTop_toBottomOf="@+id/contract_dialog_et_affiliated">
+        app:layout_constraintEnd_toEndOf="@+id/contact_dialog_et_affiliated"
+        app:layout_constraintStart_toEndOf="@+id/contact_dialog_iv_title_notification"
+        app:layout_constraintTop_toBottomOf="@+id/contact_dialog_et_affiliated">
 
         <EditText
-            android:id="@+id/contract_dialog_et_send_notification_time"
+            android:id="@+id/contact_dialog_et_send_notification_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_edit_text"
@@ -121,7 +121,7 @@
             android:padding="8dp" />
 
         <Spinner
-            android:id="@+id/contract_dialog_spinner_select_time_type"
+            android:id="@+id/contact_dialog_spinner_select_time_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp" />
@@ -143,10 +143,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contract_dialog_set_notification_sec">
+        app:layout_constraintTop_toBottomOf="@+id/contact_dialog_set_notification_sec">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/contract_dialog_btn_cancel"
+            android:id="@+id/contact_dialog_btn_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightTurquoise"
@@ -160,7 +160,7 @@
             android:layout_weight="1"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/contract_dialog_btn_accept"
+            android:id="@+id/contact_dialog_btn_accept"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/lightTurquoise"
