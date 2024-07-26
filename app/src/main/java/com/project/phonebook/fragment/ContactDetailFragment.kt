@@ -11,11 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.project.phonebook.R
 import com.project.phonebook.data.ContactData
 import com.project.phonebook.data.`object`.ContactObject
 import com.project.phonebook.databinding.FragmentContactDetailBinding
@@ -33,6 +35,7 @@ interface FragmentCallDataListener {
 
 class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
     private lateinit var binding: FragmentContactDetailBinding
+    private lateinit var callback: OnBackPressedCallback
 
 
     val SEND_REQUEST_CODE = 1
@@ -68,11 +71,14 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
             param1 = it.getString(ARG_PARAM1)
         }
 
+
         /*뒤로가기*/
         requireActivity().onBackPressed {
             requireActivity().supportFragmentManager
-                .beginTransaction().remove(this).commitNow()
+                .beginTransaction().remove(this).commit()
         }
+
+        Log.d("backpressed", "back")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -132,12 +138,11 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
         binding = FragmentContactDetailBinding.inflate(inflater)
 
         //val arg = arguments?.getParcelable("contact", ContactData::class.java)
-        binding.detailTvProfileId.text = contactData.userName
+
+        binding.detailIvProfile.setImageResource(R.drawable.ic_account_circle)
+        binding.detailTvProfileId.text = contactData?.userName
         binding.detailFirstListContent.text = contactData.phoneNumber
         binding.detailSecondListContent.text = contactData.affiliated
-        binding.detailThirdListContent.setText("${contactData.sendNotificationSec} 분 후 알람")
-
-
 
 
         return binding.root
