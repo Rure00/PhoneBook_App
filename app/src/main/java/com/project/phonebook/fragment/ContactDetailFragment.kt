@@ -140,7 +140,7 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
             }
         })
 
-        binding.detailIvProfile.setImageResource(R.drawable.ic_account_circle)
+        binding.detailIvProfile.setImageResource(contactData.profile)
         binding.detailTvProfileId.text = contactData?.userName
         binding.detailFirstListContent.text = contactData.phoneNumber
         binding.detailSecondListContent.text = contactData.affiliated
