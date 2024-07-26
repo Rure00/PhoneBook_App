@@ -43,14 +43,15 @@ class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMess
         initNotificationPermission()
 
 
-
-        supportFragmentManager.beginTransaction().add(R.id.main_fcv, LoginFragment(), "MAIN")
-            .commitNow()
         val notificationExtraData =
             intent.getParcelableExtra("notificationClick", ContactData::class.java)
+        Log.d("TAG", "onCreate extra: $notificationExtraData")
         if (notificationExtraData != null) {
             val contactDetailFragment = ContactDetailFragment(notificationExtraData)
             supportFragmentManager.beginTransaction().add(R.id.main_fcv, contactDetailFragment)
+                .commitNow()
+        } else {
+            supportFragmentManager.beginTransaction().add(R.id.main_fcv, LoginFragment(), "MAIN")
                 .commitNow()
         }
     }
@@ -107,5 +108,4 @@ class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMess
             Log.d("MainActivity", "notificationExtraData is Null")
         }
     }
-
 }

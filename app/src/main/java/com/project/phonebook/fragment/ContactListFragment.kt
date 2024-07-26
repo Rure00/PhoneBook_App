@@ -105,7 +105,6 @@ class ContactListFragment : Fragment() {
 
     private fun sendNotification(id: Int, messageData: NotificationMessageData) {
         val contactData = ContactObject.getContactList().first { it.userName == messageData.sender }
-        Log.d("TAG", "sendNotification: $contactData")
 
         val channel = NotificationChannel(CHANNEL_ID, "calling notification", NotificationManager.IMPORTANCE_DEFAULT)
         channel.description = "game call channel description"
