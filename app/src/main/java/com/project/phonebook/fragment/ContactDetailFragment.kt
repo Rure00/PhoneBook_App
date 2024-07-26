@@ -71,13 +71,6 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
             param1 = it.getString(ARG_PARAM1)
         }
 
-
-        /*뒤로가기*/
-        requireActivity().onBackPressed {
-            requireActivity().supportFragmentManager
-                .beginTransaction().remove(this).commit()
-        }
-
         Log.d("backpressed", "back")
     }
 
@@ -137,7 +130,15 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
     ): View {
         binding = FragmentContactDetailBinding.inflate(inflater)
 
+        Log.d("TAG", "onCreateView: $contactData")
         //val arg = arguments?.getParcelable("contact", ContactData::class.java)
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                requireActivity().supportFragmentManager
+                    .beginTransaction().remove(this@ContactDetailFragment).commit()
+            }
+        })
 
         binding.detailIvProfile.setImageResource(R.drawable.ic_account_circle)
         binding.detailTvProfileId.text = contactData?.userName
@@ -152,18 +153,5 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-    }
-
-
-    /*뒤로가기버튼*/
-    private fun FragmentActivity.onBackPressed(callback: () -> Unit) {
-        onBackPressedDispatcher.addCallback(
-            this,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    callback()
-                }
-            }
-        )
     }
 }

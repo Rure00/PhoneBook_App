@@ -45,14 +45,14 @@ class LoginFragment : Fragment() {
 
                 requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_fcv, MainFragment()).commitNow()
             }
-            loginJhBtn.setOnClickListener {
+            loginSmBtn.setOnClickListener {
                 MyPageAccinfo.accName = "성승모"
                 MyPageAccinfo.accPhone = "010-3333-3333"
                 MyPageAccinfo.accParty = "스타듀벨리"
 
                 requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_fcv, MainFragment()).commitNow()
             }
-            loginJhBtn.setOnClickListener {
+            loginDhBtn.setOnClickListener {
                 MyPageAccinfo.accName = "김대현"
                 MyPageAccinfo.accPhone = "010-4444-4444"
                 MyPageAccinfo.accParty = "로스트아크"

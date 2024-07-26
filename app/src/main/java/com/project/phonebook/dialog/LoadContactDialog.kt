@@ -100,7 +100,6 @@ class LoadContactDialog(private val dismissListener: DismissListener) : DialogFr
                         userName = name,
                         phoneNumber = number,
                         affiliated = "",
-                        sendNotificationSec = 10,
                         isFavorite = false
                     )
                 )
