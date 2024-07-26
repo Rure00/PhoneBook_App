@@ -23,7 +23,7 @@ import com.project.phonebook.databinding.FragmentContactDetailBinding
 private const val ARG_PARAM1 = "param1"
 
 interface FragmentMessageDataListener {
-    fun onMessageDataReceived(messageOn: Boolean, messageNum: String)
+    fun onMessageDataReceived(messageOn: Boolean, messageNum: String, messageTargetUser: String)
 }
 
 interface FragmentCallDataListener {
@@ -87,6 +87,7 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
         btnmessage.setOnClickListener {
             var callMessage = false
             var telNum = messageTelNum
+            var telTargetUser = contactData.userName
             val permissionCheck = ContextCompat.checkSelfPermission(
                 requireContext(),
                 android.Manifest.permission.SEND_SMS
@@ -98,7 +99,7 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
                 requestPermissions(arrayOf(android.Manifest.permission.SEND_SMS), SEND_REQUEST_CODE)
             } else {
                 callMessage = true
-                messageListener?.onMessageDataReceived(callMessage, telNum)
+                messageListener?.onMessageDataReceived(callMessage, telNum, telTargetUser)
             }
         }
     }

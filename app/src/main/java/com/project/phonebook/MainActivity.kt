@@ -68,10 +68,16 @@ class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMess
 
     }
 
-    override fun onMessageDataReceived(messageOn: Boolean, messageNum: String) {
+    override fun onMessageDataReceived(
+        messageOn: Boolean,
+        messageNum: String,
+        messageTargetUser: String
+    ) {
         if (messageOn == true) {
+            val smsUri = Uri.parse("smsto:${messageNum}")
             val messageIntent = Intent(Intent.ACTION_SENDTO)
-            messageIntent.data = Uri.parse("smsto:${messageNum}")
+            messageIntent.setData(smsUri)
+            messageIntent.putExtra("sms_body", "${messageTargetUser}님에게 알람을 보냅니다!")
             startActivity(messageIntent)
         }
     }
