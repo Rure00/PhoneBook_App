@@ -6,12 +6,10 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class ContactData(
     val id: Int,
-    val profile: Int = 0,
-    val userName: String = "",
-    val phoneNumber: String = "",
-    val affiliated: String = "",
-    val sendNotificationSec: Int = 0,
-    var isFavorite: Boolean = false,
-
-    var dkfjkl : String =""
+    var profile: Int = 0,
+    var userName: String = "",
+    var phoneNumber: String = "",
+    var affiliated: String = "",
+    var sendNotificationSec: Int = 0,
+    var isFavorite: Boolean = false
 ): Parcelable

@@ -14,6 +14,8 @@
     <string name="reject">거부</string>
     <string name="confirm">확인</string>
     <string name="read_contact_reject_msg">연락처 접근 권한이 필요합니다.</string>
+    <string name="detail_btn_message">Message</string>
+    <string name="detail_btn_call">call</string>
 
 
 </resources>
