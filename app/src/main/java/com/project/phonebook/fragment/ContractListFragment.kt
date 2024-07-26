@@ -26,6 +26,8 @@ class ContractListFragment : Fragment() {
     }
 
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +37,7 @@ class ContractListFragment : Fragment() {
             override fun onItemClicked(position: Int) {
                 requireActivity().supportFragmentManager.beginTransaction().add(R.id.main_fcv, ContactDetailFragment()).commitNow()
             }
-        } )
+        })
         val recyclerView = binding.contractRvContractList
 
         contactList.addAll(ContractObject.getContractList())

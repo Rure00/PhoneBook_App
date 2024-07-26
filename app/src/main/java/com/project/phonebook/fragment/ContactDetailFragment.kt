@@ -8,6 +8,7 @@ import android.view.ViewGroup
 
 import com.project.phonebook.R
 import com.project.phonebook.adapter.ContractListAdapter
+import com.project.phonebook.data.ContractData
 import com.project.phonebook.databinding.FragmentContactDetailBinding
 
 
@@ -16,7 +17,6 @@ class ContactDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
 //        val title = mutableListOf<DetailContentTitleData>()
 //        title.add(DetailContentTitleData("Phone Number", "Event", "E-Mail"))
