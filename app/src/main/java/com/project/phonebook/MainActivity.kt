@@ -97,6 +97,7 @@ class MainActivity : AppCompatActivity(), FragmentCallDataListener, FragmentMess
 
         val notificationExtraData =
             intent?.getParcelableExtra("notificationClick", ContactData::class.java)
+        Log.d("TAG", "onCreate extra: $notificationExtraData")
         if (notificationExtraData != null) {
             Log.d("MainActivity", "notificationExtraData is Not Null")
             val contactDetailFragment = ContactDetailFragment(notificationExtraData)

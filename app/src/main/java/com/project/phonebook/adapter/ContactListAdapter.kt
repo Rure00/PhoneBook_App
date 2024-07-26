@@ -21,15 +21,11 @@ class ContactListAdapter(private val clickListener: ClickListener): ListAdapter<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
-
-        holder.binding.root.setOnClickListener {
-            clickListener.onItemClicked(position)
-        }
+        holder.bind(getItem(position), position)
     }
 
     inner class ViewHolder(val binding: ItemContactListBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(contact: ContactData) {
+        fun bind(contact: ContactData, position: Int) {
             with(binding) {
                 contactItemIvProfile.setImageResource(contact.profile)
                 contactItemTvUserName.text = contact.userName
@@ -41,6 +37,10 @@ class ContactListAdapter(private val clickListener: ClickListener): ListAdapter<
 
                 contactItemIvNotification.setOnClickListener {
                     clickListener.onNotificationClick(contact)
+                }
+
+                root.setOnClickListener {
+                    clickListener.onItemClicked(position)
                 }
             }
         }

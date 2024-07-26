@@ -137,6 +137,7 @@ class ContactDetailFragment(private val contactData: ContactData) : Fragment() {
     ): View {
         binding = FragmentContactDetailBinding.inflate(inflater)
 
+        Log.d("TAG", "onCreateView: $contactData")
         //val arg = arguments?.getParcelable("contact", ContactData::class.java)
 
         binding.detailIvProfile.setImageResource(R.drawable.ic_account_circle)
