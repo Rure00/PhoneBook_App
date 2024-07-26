@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="게임 친구 목록"
+            android:fontFamily="@font/font_galmuri"
             android:layout_gravity="center"
             android:textSize="20sp"
             android:layout_marginStart="16dp"/>

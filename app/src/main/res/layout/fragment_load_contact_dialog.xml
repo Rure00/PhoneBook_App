@@ -17,8 +17,9 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         android:text="@string/load_dialog_title"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:fontFamily="@font/font_galmuri"
 
         android:gravity="center"
         android:background="@drawable/rectangle_with_border_turquoise"
@@ -38,8 +39,9 @@
 
         android:text="@string/load_dialog_body"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:gravity="center"
+        android:fontFamily="@font/font_galmuri"
         />
 
 
@@ -68,6 +70,7 @@
             android:text="@string/reject"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:fontFamily="@font/font_galmuri"
 
             android:layout_weight="1"
             android:padding="10dp"
@@ -84,6 +87,7 @@
             android:text="@string/confirm"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:fontFamily="@font/font_galmuri"
 
             android:layout_weight="1"
             android:padding="10dp"

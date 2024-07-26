@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/dialog_add_notification_tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
+        android:fontFamily="@font/font_galmuri"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,8 +20,8 @@
         android:id="@+id/dialog_add_notification_iv_title_icon"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:src="@drawable/ic_notification"
         android:layout_marginTop="24dp"
+        android:src="@drawable/ic_notification"
         app:layout_constraintStart_toStartOf="@+id/dialog_add_notification_tv_title"
         app:layout_constraintTop_toBottomOf="@+id/dialog_add_notification_tv_title" />
 
@@ -28,9 +29,10 @@
         android:id="@+id/dialog_add_notification_et_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_edit_text"
-        android:hint="보낼 메시지를 입력하세요."
         android:layout_marginStart="4dp"
+        android:background="@drawable/bg_edit_text"
+        android:fontFamily="@font/font_galmuri"
+        android:hint="보낼 메시지를 입력하세요."
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/dialog_add_notification_iv_title_icon"
         app:layout_constraintEnd_toEndOf="@+id/dialog_add_notification_tv_title"
@@ -40,9 +42,9 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/dialog_add_notification_et_message"
         app:layout_constraintStart_toStartOf="@+id/dialog_add_notification_iv_title_icon"
@@ -52,23 +54,25 @@
             android:id="@+id/dialog_add_notification_btn_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="취소"
-            android:textColor="@color/white"
+            android:layout_weight="2"
             android:backgroundTint="@color/mainTurquoise"
-            android:layout_weight="2"/>
+            android:text="취소"
+            android:fontFamily="@font/font_galmuri"
+            android:textColor="@color/white" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/dialog_add_notification_btn_send"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="전송"
-            android:textColor="@color/white"
+            android:layout_weight="2"
             android:backgroundTint="@color/mainTurquoise"
-            android:layout_weight="2"/>
+            android:text="전송"
+            android:fontFamily="@font/font_galmuri"
+            android:textColor="@color/white" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
