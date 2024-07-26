@@ -5,8 +5,6 @@ import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.project.phonebook.R
@@ -25,30 +23,12 @@ class AddContactDialog(private val onAcceptClick: (ContactData) -> Unit): Dialog
         val userNameEditText = binding.contactDialogEtUserName
         val phoneNumEditText = binding.contactDialogEtPhoneNumber
         val affiliatedEditText = binding.contactDialogEtAffiliated
-        val sendNotificationEditText = binding.contactDialogEtSendNotificationTime
 
         phoneNumEditText.addTextChangedListener(PhoneNumberFormattingTextWatcher())
 
-        var selectTimeValueSecond = 1
-        binding.initSpinner()
-        binding.contactDialogSpinnerSelectTimeType.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if (parent != null) {
-                    when (position) {
-                        0 -> selectTimeValueSecond = 1
-                        1 -> selectTimeValueSecond = 60
-                        2 -> selectTimeValueSecond = 3600
-                    }
-                }
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
         val currentListSize = ContactObject.getContactListSize()
         binding.contactDialogBtnAccept.setOnClickListener {
-            if (userNameEditText.text.isEmpty() || phoneNumEditText.text.isEmpty() ||
-                affiliatedEditText.text.isEmpty() || sendNotificationEditText.text.isEmpty()) {
+            if (userNameEditText.text.isEmpty() || phoneNumEditText.text.isEmpty() || affiliatedEditText.text.isEmpty()) {
                 Toast.makeText(context, "입력되지 않은 정보가 있습니다.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -63,7 +43,6 @@ class AddContactDialog(private val onAcceptClick: (ContactData) -> Unit): Dialog
                 userName = userNameEditText.text.toString(),
                 phoneNumber = phoneNumEditText.text.toString(),
                 affiliated = affiliatedEditText.text.toString(),
-                sendNotificationSec = sendNotificationEditText.text.toString().toInt() * selectTimeValueSecond,
                 isFavorite = false
             )
             onAcceptClick(addContactData)
@@ -76,15 +55,5 @@ class AddContactDialog(private val onAcceptClick: (ContactData) -> Unit): Dialog
         }
 
         return binding.root
-    }
-
-    private fun DialogAddContactBinding.initSpinner() {
-        val adapter = ArrayAdapter(
-            requireContext(),
-            androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-            resources.getStringArray(R.array.time_types)
-        )
-        adapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item)
-        contactDialogSpinnerSelectTimeType.adapter = adapter
     }
 }

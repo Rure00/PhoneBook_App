@@ -10,6 +10,5 @@ data class ContactData(
     var userName: String = "",
     var phoneNumber: String = "",
     var affiliated: String = "",
-    var sendNotificationSec: Int = 0,
     var isFavorite: Boolean = false
 ): Parcelable
