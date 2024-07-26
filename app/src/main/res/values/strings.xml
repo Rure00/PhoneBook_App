@@ -17,5 +17,9 @@
     <string name="detail_btn_message">Message</string>
     <string name="detail_btn_call">call</string>
 
+    <string name="login_jh_name">박정호</string>
+    <string name="login_gr_name">임가람</string>
+    <string name="login_sm_name">성승모</string>
+    <string name="login_dh_name">김대현</string>
 
 </resources>
