@@ -12,4 +12,6 @@ data class ContactData(
     val affiliated: String = "",
     val sendNotificationSec: Int = 0,
     var isFavorite: Boolean = false,
+
+    var dkfjkl : String =""
 ): Parcelable
