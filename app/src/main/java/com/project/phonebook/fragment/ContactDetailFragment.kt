@@ -16,8 +16,6 @@ import com.project.phonebook.R
 import com.project.phonebook.data.ContractData
 import com.project.phonebook.adapter.ContactDetailAdapter
 import com.project.phonebook.data.DetailTitleData
-import com.project.phonebook.adapter.ContractListAdapter
-import com.project.phonebook.data.ContractData
 import com.project.phonebook.databinding.FragmentContactDetailBinding
 
 
