@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ContractListFragment">
+    tools:context=".fragment.ContactListFragment">
 
     <LinearLayout
-        android:id="@+id/contract_toolbar_contract_list"
+        android:id="@+id/contact_toolbar_contact_list"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
@@ -27,7 +27,7 @@
             android:layout_weight="1"/>
 
         <ImageView
-            android:id="@+id/add_contract_iv_contract_list"
+            android:id="@+id/add_contact_iv_contact_list"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_add"
@@ -43,11 +43,11 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/contract_rv_contract_list"
+        android:id="@+id/contact_rv_contact_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contract_toolbar_contract_list" />
+        app:layout_constraintTop_toBottomOf="@+id/contact_toolbar_contact_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>
