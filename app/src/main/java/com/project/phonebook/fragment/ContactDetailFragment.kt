@@ -80,8 +80,3 @@ class ContactDetailFragment : Fragment() {
         )
     }
 }
-
-
-
-
-
