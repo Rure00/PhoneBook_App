@@ -12,13 +12,11 @@ import androidx.annotation.RequiresApi
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.project.phonebook.MainActivity
 import com.project.phonebook.R
 import com.project.phonebook.data.ContractData
 import com.project.phonebook.adapter.ContactDetailAdapter
 import com.project.phonebook.data.DetailTitleData
 import com.project.phonebook.databinding.FragmentContactDetailBinding
-import com.project.phonebook.fragment.ContractListFragment
 
 
 class ContactDetailFragment : Fragment() {
@@ -30,7 +28,7 @@ class ContactDetailFragment : Fragment() {
         /*뒤로가기 추가중*/
         requireActivity().onBackPressed {
             requireActivity().supportFragmentManager.beginTransaction().replace(R.id.main_fcv,
-                ContractListFragment()
+                ContactListFragment()
             ).commit()
         }
     }
@@ -72,7 +70,8 @@ class ContactDetailFragment : Fragment() {
 
     /*뒤로가기버튼*/
     private fun FragmentActivity.onBackPressed(callback: () -> Unit) {
-        onBackPressedDispatcher.addCallback(this,
+        onBackPressedDispatcher.addCallback(
+            this,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
                     callback()

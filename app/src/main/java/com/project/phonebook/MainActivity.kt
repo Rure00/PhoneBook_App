@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
-import androidx.activity.OnBackPressedCallback
 import android.provider.Settings
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
@@ -14,10 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.project.phonebook.fragment.ContactDetailFragment
 import com.project.phonebook.data.ContractData
-import com.project.phonebook.data.DetailTitleData
 import com.project.phonebook.databinding.ActivityMainBinding
-import com.project.phonebook.fragment.ContactDetailFragment
-import com.project.phonebook.fragment.ContractListFragment
 import com.project.phonebook.fragment.MainFragment
 
 class MainActivity : AppCompatActivity() {
