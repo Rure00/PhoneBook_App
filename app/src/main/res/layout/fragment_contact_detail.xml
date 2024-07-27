@@ -30,6 +30,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="30dp"
+            android:fontFamily="@font/font_galmuri"
             app:layout_constraintBottom_toBottomOf="@+id/detail_iv_profile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -60,6 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/detail_btn_message"
+                        android:fontFamily="@font/font_galmuri"
                         android:backgroundTint="@color/mainTurquoise"
                         app:layout_constraintEnd_toStartOf="@+id/detail_btn_call"
                         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +73,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/detail_btn_call"
+                        android:fontFamily="@font/font_galmuri"
                         android:backgroundTint="@color/mainTurquoise"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/detail_btn_message"
@@ -99,8 +102,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
-                            android:text="Phone_number"
+                            android:text="Phone number"
                             android:textSize="15sp"
+                            android:fontFamily="@font/font_galmuri"
                             app:layout_constraintBottom_toTopOf="@+id/detail_first_list_content"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -111,6 +115,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:textSize="20sp"
+                            android:fontFamily="@font/font_galmuri"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/detail_first_list_title" />
@@ -142,6 +147,7 @@
                             android:layout_marginStart="20dp"
                             android:text="Now Playing"
                             android:textSize="15sp"
+                            android:fontFamily="@font/font_galmuri"
                             app:layout_constraintBottom_toTopOf="@+id/detail_second_list_content"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -152,6 +158,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:textSize="20sp"
+                            android:fontFamily="@font/font_galmuri"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/detail_second_list_title" />
