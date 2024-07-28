@@ -147,7 +147,31 @@ class MyPageFragment : Fragment() {
             override fun handleOnBackPressed() {
                 Log.d("MyPageFragment", "뒤로가기 버튼 눌림")
 
-                (parentFragment as MainFragment).requireView().findViewById<ViewPager2>(R.id.main_vp).currentItem = 0
+                if(chkMode == true){
+                    // 모드 변환
+                    chkMode = false
+
+                    // 텍스트뷰 활성화
+                    tvParty.visibility = View.VISIBLE
+                    tvPhone.visibility = View.VISIBLE
+
+                    // 에디트뷰 비활성화
+                    etvParty.setText(myAccount?.affiliated)
+                    etvParty.visibility = View.INVISIBLE
+                    etvPhone.setText(myAccount?.phoneNumber)
+                    etvPhone.visibility = View.INVISIBLE
+
+                    // 버튼 이름 변경
+                    btnRewriteProfile.text = "프로필 수정하기"
+
+                    // 모션 레이아웃 상태 고정
+                    motAnchor.transitionToStart()
+
+                    Log.d("MyPageFragment", "이거 왜 안되??")
+                }
+                else{
+                    (parentFragment as MainFragment).requireView().findViewById<ViewPager2>(R.id.main_vp).currentItem = 0
+                }
 
             }
         })
@@ -159,6 +183,46 @@ class MyPageFragment : Fragment() {
         super.onResume()
 
         Log.d("MyPageFragment", "onResume 상태 시작")
+
+        // 버튼용 변수 추가(박정호)
+        val btnRewriteProfile:Button = MyPageStdBinding.mypageBtnFixProfile
+
+        // 텍스트뷰 변수 추가 및 초기화(박정호)
+        val tvName:TextView = MyPageStdBinding.mypageTextName
+        tvName.text = myAccount?.userName
+        val tvParty:TextView = MyPageStdBinding.mypageTextCompany
+        tvParty.text = myAccount?.affiliated
+        val tvPhone:TextView = MyPageStdBinding.mypageTextContentsPhone
+        tvPhone.text = myAccount?.phoneNumber
+
+        // 에딧텍스트뷰 변수 추가 및 초기화(박정호)
+//        val etvName:EditText = MyPageStdBinding.mypageEdittextName
+//        etvName.setText(myAccount?.userName)
+        val etvParty:EditText = MyPageStdBinding.mypageEdittextCompany
+        etvParty.setText(myAccount?.affiliated)
+        val etvPhone:EditText = MyPageStdBinding.mypageEdittextContentsPhone
+        etvPhone.setText(myAccount?.phoneNumber)
+
+        if(chkMode == true){
+            // 모드 변환
+            chkMode = false
+
+            // 텍스트뷰 활성화
+            tvParty.visibility = View.VISIBLE
+            tvPhone.visibility = View.VISIBLE
+
+            // 에디트뷰 비활성화
+            etvParty.setText(myAccount?.affiliated)
+            etvParty.visibility = View.INVISIBLE
+            etvPhone.setText(myAccount?.phoneNumber)
+            etvPhone.visibility = View.INVISIBLE
+
+            // 버튼 이름 변경
+            btnRewriteProfile.text = "프로필 수정하기"
+
+            Log.d("MyPageFragment", "이거 왜 안되2??")
+        }
+
         MyPageStdBinding = MypageMainLayoutV1Binding.inflate(layoutInflater)
 
         // 레이아웃 최신화
