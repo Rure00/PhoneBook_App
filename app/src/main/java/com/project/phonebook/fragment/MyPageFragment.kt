@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -45,8 +46,12 @@ class MyPageFragment : Fragment() {
         // 모션 레이아웃 상태 고정을 위한 변수 추가(박정호)
         val motAnchor:MotionLayout = MyPageStdBinding.mypagePrinceLayout
 
-        // 버튼용 번수 추가(박정호)
+        // 버튼용 변수 추가(박정호)
         val btnRewriteProfile:Button = MyPageStdBinding.mypageBtnFixProfile
+
+        // 이미지뷰 변수 추가(박정호)
+        var ivUser:ImageView = MyPageStdBinding.mypageImgProfileMain
+        ivUser.setImageResource(myAccount?.profile ?: R.drawable.mypage_prf_img)
 
         // 텍스트뷰 변수 추가 및 초기화(박정호)
         val tvName:TextView = MyPageStdBinding.mypageTextName
