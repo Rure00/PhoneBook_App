@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mypage_king_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white" >
+
+    <LinearLayout
+        android:id="@+id/mypage_contract_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:text="내 정보"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mypage_guideline_upper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="56dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mypage_guideline_under"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/mypage_prince_layout"
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        app:layoutDescription="@xml/mypage_main_layout_v1_xml_mypage_prince_layout_scene"
+        app:layout_constraintBottom_toTopOf="@id/mypage_guideline_under"
+        app:layout_constraintTop_toTopOf="@id/mypage_guideline_upper">
+
+        <ImageView
+            android:id="@+id/mypage_img_profile_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mypage_prf_img" />
+
+        <ImageView
+            android:id="@+id/mypage_img_profile_gradation"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:alpha="1.0"
+            android:src="@drawable/mypage_prf_gradation"
+            app:layout_constraintBottom_toTopOf="@id/mypage_img_profile_gradation_subbar"
+            app:layout_constraintEnd_toEndOf="@+id/mypage_img_profile_main"
+            app:layout_constraintStart_toStartOf="@+id/mypage_img_profile_main" />
+
+        <View
+            android:id="@+id/mypage_img_profile_gradation_subbar"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/mypage_img_profile_main" />
+
+        <TextView
+            android:id="@+id/mypage_text_name"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="야생인 김만덕"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:fontFamily="@font/font_galmuri"
+            app:layout_constraintBottom_toTopOf="@+id/mypage_text_company"
+            app:layout_constraintEnd_toEndOf="@+id/mypage_text_company"
+            app:layout_constraintStart_toStartOf="@+id/mypage_text_company" />
+
+        <TextView
+            android:id="@+id/mypage_text_company"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="마인크래프트를 파괴한다"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:fontFamily="@font/font_galmuri"
+            app:layout_constraintBottom_toBottomOf="@id/mypage_img_profile_main"
+            app:layout_constraintEnd_toEndOf="@+id/mypage_img_profile_main"
+            app:layout_constraintStart_toStartOf="@+id/mypage_img_profile_main" />
+
+        <EditText
+            android:id="@+id/mypage_edittext_name"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="39dp"
+            android:ems="10"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="야생인 김만덕"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            android:fontFamily="@font/font_galmuri"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_edittext_company"
+            app:layout_constraintEnd_toEndOf="@+id/mypage_edittext_company"
+            app:layout_constraintStart_toStartOf="@+id/mypage_edittext_company" />
+
+        <EditText
+            android:id="@+id/mypage_edittext_company"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:ems="10"
+            android:inputType="text"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="마인크래프트를 파괴한다"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            android:fontFamily="@font/font_galmuri"
+            app:layout_constraintBottom_toBottomOf="@id/mypage_img_profile_main"
+            app:layout_constraintEnd_toEndOf="@+id/mypage_img_profile_main"
+            app:layout_constraintStart_toStartOf="@+id/mypage_img_profile_main" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mypage_main_layer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mypage_img_profile_main">
+
+            <View
+                android:id="@+id/mypage_view_phone"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/mypage_btn1_round"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/mypage_text_title_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:text="휴대폰"
+                android:textSize="14sp"
+                android:fontFamily="@font/font_galmuri"
+                app:layout_constraintStart_toStartOf="@+id/mypage_view_phone"
+                app:layout_constraintTop_toTopOf="@+id/mypage_view_phone" />
+
+            <TextView
+                android:id="@+id/mypage_text_contents_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:letterSpacing="0.1"
+                android:text="010-1111-2222"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                android:fontFamily="@font/font_galmuri"
+                app:layout_constraintStart_toStartOf="@id/mypage_text_title_phone"
+                app:layout_constraintTop_toBottomOf="@+id/mypage_text_title_phone" />
+
+            <EditText
+                android:id="@+id/mypage_edittext_contents_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-4dp"
+                android:layout_marginTop="-8dp"
+                android:ems="10"
+                android:inputType="text"
+                android:letterSpacing="0.1"
+                android:text="010-1111-2222"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                android:fontFamily="@font/font_galmuri"
+                app:layout_constraintStart_toStartOf="@id/mypage_text_title_phone"
+                app:layout_constraintTop_toBottomOf="@+id/mypage_text_title_phone" />
+
+            <Button
+                android:id="@+id/mypage_btn_fix_profile"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/mypage_btn1_standard"
+                android:text="프로필 수정하기"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/font_galmuri"
+                app:layout_constraintEnd_toEndOf="@id/mypage_view_phone"
+                app:layout_constraintStart_toStartOf="@id/mypage_view_phone"
+                app:layout_constraintTop_toBottomOf="@id/mypage_view_phone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
