@@ -53,6 +53,17 @@ object ContactObject {
 
     fun getContactListSize() = contactList.size
 
+    // 프로필 수정용 메서드(테스트중)
+//    fun rewriteContactList(tgtName: String, reAff:String, rePhone: String){
+//        contactList.forEach { contactData ->
+//            if(contactData.userName == tgtName){
+//                contactData.affiliated = reAff
+//                contactData.phoneNumber = rePhone
+//                return
+//            }
+//        }
+//    }
+
     private fun addContact(contactData: ContactData) {
         contactList.add(contactData)
     }

@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class ContactData(
     val id: Int,
     var profile: Int = 0,
-    var userName: String = "",
+    val userName: String = "",
     var phoneNumber: String = "",
     var affiliated: String = "",
     var isFavorite: Boolean = false
